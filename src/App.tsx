@@ -12,17 +12,31 @@ import jpegDictionaryApp from './media_projects/jpeg/jpegdictionaryapp.jpg'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faEnvelope, faCode, faWindowMaximize} from '@fortawesome/free-solid-svg-icons'
 import {faLinkedin, faGithub} from '@fortawesome/free-brands-svg-icons'
-
-
 import './App.scss'
 
 function App() {
-  const [showLinks, setShowLinks] = useState<string>('anchor-links-hide')
 
-  const handleShowLinks = () => {
-    if (showLinks === 'anchor-links-hide') {
-      setShowLinks('anchor-links-show');
-    } else setShowLinks('anchor-links-hide');
+  const [showLinks, setShowLinks] = useState<Array<number>>([0, 0, 0, 0])
+
+  const handleShowLinks = (e: any) => {
+    let toggle: Array<number> = [...showLinks];
+
+    switch (e.target.id) {
+      case 'ref1': 
+        toggle[0] === 0 ? toggle[0] = 1 : toggle[0] = 0;
+        break;
+      case 'ref2': 
+        toggle[1] === 0 ? toggle[1] = 1 : toggle[1] = 0; 
+        break;
+      case 'ref3': 
+        toggle[2] === 0 ? toggle[2] = 1 : toggle[2] = 0; 
+        break;
+      case 'ref4': 
+        toggle[3] === 0 ? toggle[3] = 1 : toggle[3] = 0; 
+        break;
+    }
+    
+    setShowLinks([...toggle])
   }
 
   return (
@@ -47,7 +61,7 @@ function App() {
 
         <section id='projects' className='projects-wrap'>
           <div className='box-wrap' onClick={handleShowLinks}>
-            <img className='static' src={jpegPokeStore} alt='pokestore jpeg'></img>
+            <img id='ref1' className='static' src={jpegPokeStore} alt='Poke Store jpeg'></img>
             <img src={gifPokeStore} alt='Poke Store gif'></img>
             
             <div>
@@ -56,7 +70,8 @@ function App() {
                 <img src='https://skillicons.dev/icons?i=react,typescript,redux,next,sass&theme=dark' alt='Poke Store Skills'></img>
               </div>
 
-              <div className={showLinks}>
+              <div id='ref1' className={showLinks[0] === 0 ? 'anchor-links-hide' : 'anchor-links-show'}>
+
                 <div>
                   <a href='https://poke-store456.netlify.app/'>
                     <FontAwesomeIcon icon={faWindowMaximize} /> See project</a>
@@ -68,8 +83,8 @@ function App() {
             </div>
           </div>
 
-          <div className='box-wrap'>
-            <img className='static' src={jpegTaskApp} alt='pokestore jpeg'></img>
+          <div className='box-wrap' onClick={handleShowLinks}>
+            <img id='ref2' className='static' src={jpegTaskApp} alt='Task App jpeg'></img>
             <img src={gifTaskApp} alt='Task App gif'></img>
 
             <div>
@@ -78,13 +93,21 @@ function App() {
                 <img src='https://skillicons.dev/icons?i=react,typescript,styledcomponents&theme=dark' alt='Task App Skills'></img>
               </div>
 
-              <a href=''>See project</a>
-              <a href=''>Repository</a>
+              <div id='ref2' className={showLinks[1] === 0 ? 'anchor-links-hide' : 'anchor-links-show'}>
+                
+                <div>
+                  <a href='https://task-app456.netlify.app/'>
+                    <FontAwesomeIcon icon={faWindowMaximize} /> See project</a>
+                  <a href='https://github.com/HigorR456/Task-App'>
+                  <FontAwesomeIcon icon={faCode} /> Repository</a>
+                </div>
+
+              </div>
             </div>
           </div>
           
-          <div className='box-wrap'>
-            <img className='static' src={jpegClickTest} alt='pokestore jpeg'></img>
+          <div className='box-wrap' onClick={handleShowLinks}>
+            <img id='ref3' className='static' src={jpegClickTest} alt='Click Test jpeg'></img>
             <img src={gifClickTest} alt='Click Test gif'></img>
 
               <div>
@@ -93,13 +116,21 @@ function App() {
                   <img src='https://skillicons.dev/icons?i=react,typescript&theme=dark' alt='Click Test Skills'></img>
                 </div>
 
-                <a href=''>See project</a>
-                <a href=''>Repository</a>
+                <div id='ref3' className={showLinks[2] === 0 ? 'anchor-links-hide' : 'anchor-links-show'}>
+                
+                  <div>
+                    <a href='https://click-test456.netlify.app/'>
+                      <FontAwesomeIcon icon={faWindowMaximize} /> See project</a>
+                    <a href='https://github.com/HigorR456/click-test'>
+                    <FontAwesomeIcon icon={faCode} /> Repository</a>
+                  </div>
+
+                </div>
               </div>
           </div>
 
-          <div className='box-wrap'>
-            <img className='static' src={jpegDictionaryApp} alt='pokestore jpeg'></img>
+          <div className='box-wrap' onClick={handleShowLinks}>
+            <img id='ref4' className='static' src={jpegDictionaryApp} alt='Dictionary App jpeg'></img>
             <img src={gifDictionaryApp} alt='Dictionary App gif'></img>
               <div>
                 <div>
@@ -107,8 +138,16 @@ function App() {
                   <img src='https://skillicons.dev/icons?i=javascript,html,css&theme=dark' alt='Dictionary App Skills'></img>
                 </div>
 
-                <a href=''>See project</a>
-                <a href=''>Repository</a>
+                <div id='ref4' className={showLinks[3] === 0 ? 'anchor-links-hide' : 'anchor-links-show'}>
+                
+                  <div>
+                    <a href='https://dictionary-app456.netlify.app/'>
+                      <FontAwesomeIcon icon={faWindowMaximize} /> See project</a>
+                    <a href='https://github.com/HigorR456/Dictionary-App'>
+                    <FontAwesomeIcon icon={faCode} /> Repository</a>
+                  </div>
+
+                </div>
               </div>
           </div>
           

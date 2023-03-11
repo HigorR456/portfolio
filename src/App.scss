@@ -6,6 +6,11 @@ header {
 
   height: 50px;
   background: black;
+  width: 100%;
+  top: 0;
+
+  position: sticky;
+  z-index: 1;
 
   a {
     text-decoration: none;
@@ -60,11 +65,9 @@ main {
       border-radius: 20px;
       align-items: center;
 
-      &:hover { cursor: pointer; }
-
       .static { 
-        position: absolute; 
-        &:hover { opacity: 0; } 
+        position: absolute;
+        &:hover { opacity: 0; cursor: pointer; } 
         &:hover + img { animation: hoverImg 0.2s forwards; }
       }
 
@@ -93,10 +96,6 @@ main {
           animation: classTransition 0.4s forwards;
 
           position: relative;
-          width: 415px;
-          height: 355px;
-          bottom: 350px;
-          border-radius: 20px;
           background: rgba(1, 183, 253, 0.75);
 
           display: flex;
@@ -104,11 +103,14 @@ main {
           align-items: center;
           justify-content: space-around;
 
+          &:hover { cursor: pointer; }
+
           div { 
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            height: 180px;
+            height: 170px;
+            width: 250px;
           
             a {
               animation: anchorTransition 0.4s forwards;
@@ -138,8 +140,21 @@ main {
 
         @keyframes classTransition {
           0% { opacity: 0; }
-          40% { border-radius: 20px; }
-          100% { border-radius: 0px; }
+          40% { 
+            width: 405px;
+            height: 345px;
+            bottom: 343px;
+            border-radius: 15px;
+            left: 5px;
+          }
+          100% { 
+            width: 415px;
+            height: 355px;
+            bottom: 350px;
+            border-radius: 0px;
+            left: 0px;
+          }
+          
         }
 
         @keyframes anchorTransition {
